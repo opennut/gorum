@@ -1,0 +1,203 @@
+body { padding-top: 70px; }
+.navbar-default {
+	background-color: #0065A4;
+}
+.navbar-default .navbar-brand {
+	color: #FFF;
+}
+.navbar-default .navbar-nav>li>a {
+	color: #FFF;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+	color: #FFF;
+	background-color: #05548D;
+}
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+	color: #FFF;
+	background-color: #05548D;
+}
+
+.list-group-gorum li{
+	display: inline-block;
+}
+.list-group-gorum a {
+	border: none;
+	border-radius: 0;
+}
+.username{
+	font-weight: bold;
+}
+.info-discussion{
+	margin: 0;
+	padding: 0;
+}
+.list-group-gorum .tags-badges{
+	position: absolute;
+	right: 0;
+	width: auto;
+	margin-top: 0px;
+}
+.list-group-gorum .list-group-item{
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+.list-group-gorum .list-group-item-heading{
+	max-height: 2em;
+	overflow: hidden;
+}
+.list-group-gorum .list-group-item-text{
+	max-height: 3em;
+	padding-top: 4px;
+	overflow: hidden;
+}
+
+.label-group .label{
+	font-size: 0.8em;
+	border-radius: 0px;
+	border-top-right-radius: 0.25em;
+	border-top-left-radius: 0.25em;
+	border-bottom-right-radius: 0.25em;
+	border-bottom-left-radius: 0.25em;
+	border-radius: 0px;
+}
+
+.label-group .label+.label, .label-group .label+.label-group, .label-group .label-group+.label, .label-group .label-group+.label-group {
+	margin-left: -1px;
+}
+.label-group>.label:first-child {
+	border-top-left-radius: .26em !important;
+	border-bottom-left-radius: .26em !important;
+}
+.label-group>.label:last-child {
+	border-top-right-radius: .26em !important;
+	border-bottom-right-radius: .26em !important;
+}
+.label-group>.label:first-child {
+	margin-left: 0;
+}
+
+.label-group-vertical>.label, .label-group>.label {
+	position: relative;
+	float: left;
+}
+
+.list-group-gorum .media-object{
+	width: 36px;
+	height: 36px
+}
+
+.sort{
+	background-color: #e8ecf3;
+	color: #667c99;
+	margin-bottom: 10px;
+	width: auto;
+	min-width: 100px;
+	margin-left: 15px;
+}
+
+.navbar-form .search-text{
+	background-color: #05548D;
+	color: #FFF;
+	border-color: #05548D;
+}
+
+.navbar-form .search-text::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	color:    #FFF;
+}
+.navbar-form .search-text:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #FFF;
+	opacity:  1;
+}
+.navbar-form .search-text::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #FFF;
+	opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color:    #FFF;
+}
+.navbar-form .search-text::-ms-input-placeholder { /* Microsoft Edge */
+	color:    #FFF;
+}
+
+
+.btn-create-discussion {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.left-menu {
+	text-align: center;
+}
+
+.left-menu .btn-group {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.left-menu .btn-group button {
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+	border: none;
+}
+
+.left-menu .dropdown-menu {
+	position: relative;
+	width: 90%;
+	margin-left: 10%;
+	box-shadow: none;
+	border: none;
+}
+
+.left-menu .btn-group.open .dropdown-toggle {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+
+}
+
+.search-text {
+	outline: none;
+}
+
+.search-text {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+.search-text::-webkit-search-decoration,
+.search-text::-webkit-search-cancel-button {
+	display: none;
+}
+
+
+.search-text {
+	background: #ededed url(/public/img/search-icon.png) no-repeat 9px center;
+	border: solid 1px #ccc;
+	padding: 0px 0px 0px 35px;
+	width: 55px;
+	color: #FFF;
+
+
+	-webkit-transition: all .5s !important;
+	-moz-transition: all .5s !important;
+	transition: all .5s !important;
+}
+.search-text:focus {
+	width: 330px;
+
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+.search-text:-moz-placeholder {
+	color: #999;
+}
+.search-text::-webkit-input-placeholder {
+	color: #999;
+}
