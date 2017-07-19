@@ -124,41 +124,6 @@ func main() {
 			
 		})
 	
-	revel.RegisterController((*controllers.App)(nil),
-		[]*revel.MethodType{
-			
-		})
-	
-	revel.RegisterController((*controllers.AdminApp)(nil),
-		[]*revel.MethodType{
-			
-		})
-	
-	revel.RegisterController((*controllers.Home)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					17: []string{ 
-					},
-				},
-			},
-			&revel.MethodType{
-				Name: "Detail",
-				Args: []*revel.MethodArg{ 
-					&revel.MethodArg{Name: "ID", Type: reflect.TypeOf((*int)(nil)) },
-					&revel.MethodArg{Name: "name", Type: reflect.TypeOf((*string)(nil)) },
-				},
-				RenderArgNames: map[int][]string{ 
-					29: []string{ 
-					},
-				},
-			},
-			
-		})
-	
 	revel.RegisterController((*controllers.Accounts)(nil),
 		[]*revel.MethodType{
 			&revel.MethodType{
@@ -205,6 +170,41 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.App)(nil),
+		[]*revel.MethodType{
+			
+		})
+	
+	revel.RegisterController((*controllers.AdminApp)(nil),
+		[]*revel.MethodType{
+			
+		})
+	
+	revel.RegisterController((*controllers.Home)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Index",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					17: []string{ 
+					},
+				},
+			},
+			&revel.MethodType{
+				Name: "Detail",
+				Args: []*revel.MethodArg{ 
+					&revel.MethodArg{Name: "ID", Type: reflect.TypeOf((*int)(nil)) },
+					&revel.MethodArg{Name: "name", Type: reflect.TypeOf((*string)(nil)) },
+				},
+				RenderArgNames: map[int][]string{ 
+					29: []string{ 
+					},
 				},
 			},
 			

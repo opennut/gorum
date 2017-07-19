@@ -96,39 +96,6 @@ func (_ tTestRunner) List(
 }
 
 
-type tApp struct {}
-var App tApp
-
-
-
-type tAdminApp struct {}
-var AdminApp tAdminApp
-
-
-
-type tHome struct {}
-var Home tHome
-
-
-func (_ tHome) Index(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Home.Index", args).URL
-}
-
-func (_ tHome) Detail(
-		ID int,
-		name string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "ID", ID)
-	revel.Unbind(args, "name", name)
-	return revel.MainRouter.Reverse("Home.Detail", args).URL
-}
-
-
 type tAccounts struct {}
 var Accounts tAccounts
 
@@ -180,6 +147,39 @@ func (_ tAccounts) Logout(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("Accounts.Logout", args).URL
+}
+
+
+type tApp struct {}
+var App tApp
+
+
+
+type tAdminApp struct {}
+var AdminApp tAdminApp
+
+
+
+type tHome struct {}
+var Home tHome
+
+
+func (_ tHome) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Home.Index", args).URL
+}
+
+func (_ tHome) Detail(
+		ID int,
+		name string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "ID", ID)
+	revel.Unbind(args, "name", name)
+	return revel.MainRouter.Reverse("Home.Detail", args).URL
 }
 
 
