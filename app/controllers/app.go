@@ -70,10 +70,10 @@ func (c AdminApp) checkUser() revel.Result {
 		c.Validation.Required(user != nil).Key("Email").Message("Permissions required")
 		return c.Redirect(routes.Accounts.Login())
 	} else {
-		if !user.IsAdmin {
+		/*if !user.IsAdmin {
 			c.Validation.Required(user != nil).Key("Email").Message("Permissions required")
 			return c.Redirect(routes.Accounts.Login())
-		}
+		}*/
 	}
 	return nil
 }

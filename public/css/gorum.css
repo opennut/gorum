@@ -201,3 +201,9 @@ body { padding-top: 70px; }
 .search-text::-webkit-input-placeholder {
 	color: #999;
 }
+
+
+.navbar-default{
+	margin-bottom: 0px;
+	border-color: #0065A4;
+}

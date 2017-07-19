@@ -183,6 +183,18 @@ func (_ tAccounts) Logout(
 }
 
 
+type tUsers struct {}
+var Users tUsers
+
+
+func (_ tUsers) Profile(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Users.Profile", args).URL
+}
+
+
 type tDashboard struct {}
 var Dashboard tDashboard
 

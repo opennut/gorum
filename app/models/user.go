@@ -9,6 +9,7 @@ type User struct {
 	Model
 	Username       string `gorm:"type:varchar(20);unique_index"  json:"username"`
 	Name           string `gorm:"size:255"  json:"name"`
+	Bio            string `gorm:"size:255"  json:"bio"`
 	Email          string `gorm:"type:varchar(100);unique_index"  json:"email"`
 	HashedPassword []byte `json:"-"`
 	Active         bool   `json:"active"`

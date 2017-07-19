@@ -184,7 +184,7 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
-					51: []string{ 
+					52: []string{ 
 					},
 				},
 			},
@@ -205,6 +205,21 @@ func main() {
 				Args: []*revel.MethodArg{ 
 				},
 				RenderArgNames: map[int][]string{ 
+				},
+			},
+			
+		})
+	
+	revel.RegisterController((*controllers.Users)(nil),
+		[]*revel.MethodType{
+			&revel.MethodType{
+				Name: "Profile",
+				Args: []*revel.MethodArg{ 
+				},
+				RenderArgNames: map[int][]string{ 
+					22: []string{ 
+						"user",
+					},
 				},
 			},
 			
@@ -233,17 +248,16 @@ func main() {
 			32: "err",
 		},
 		"github.com/opennut/gorum/app/controllers.Accounts.RegisterPost": { 
-			56: "email",
 			57: "email",
-			58: "username",
-			59: "name",
-			60: "password",
-			61: "password2",
-			62: "password",
+			58: "email",
+			59: "username",
+			60: "name",
+			61: "password",
+			62: "password2",
+			63: "password",
 		},
 		"github.com/opennut/gorum/app/controllers.AdminApp.checkUser": { 
 			70: "user",
-			74: "user",
 		},
 		"github.com/opennut/gorum/app/controllers.App.checkUser": { 
 			56: "user",

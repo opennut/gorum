@@ -39,7 +39,8 @@ func (c Accounts) LoginProccess(email string, password string) revel.Result {
 		return c.Redirect(routes.Accounts.Login())
 	}
 	c.Session["user"] = user.Email
-	c.Flash.Success("Welcome, " + user.Email)
+	c.Session["username"] = user.Username
+	c.Flash.Success("Welcome, " + user.Username)
 	//if user.IsAdmin {
 	//	return c.Redirect(routes.Dashboard.Index())
 	//}
