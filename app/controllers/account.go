@@ -12,11 +12,6 @@ type Accounts struct {
 	PublicApp
 }
 
-// Login method
-func (c Accounts) Login() revel.Result {
-	return c.Render()
-}
-
 // LoginProccess with data from Login form
 func (c Accounts) LoginProccess(email string, password string) revel.Result {
 	c.Validation.Required(email)
@@ -36,7 +31,7 @@ func (c Accounts) LoginProccess(email string, password string) revel.Result {
 		if user.ID == 0 {
 			return c.Redirect(routes.Accounts.Register())
 		}
-		return c.Redirect(routes.Accounts.Login())
+		return c.Redirect(routes.Home.Index())
 	}
 	c.Session["user"] = user.Email
 	c.Session["username"] = user.Username
@@ -78,5 +73,5 @@ func (c Accounts) Logout() revel.Result {
 	for k := range c.Session {
 		delete(c.Session, k)
 	}
-	return c.Redirect(routes.Accounts.Login())
+	return c.Redirect(routes.Home.Index())
 }

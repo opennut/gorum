@@ -7,6 +7,15 @@ import (
 	"modules/gorm/app"
 )
 
+type FileInfo struct {
+	ContentType string
+	Filename    string
+	RealFormat  string `json:",omitempty"`
+	Resolution  string `json:",omitempty"`
+	Size        int
+	Status      string `json:",omitempty"`
+}
+
 // PublicApp without permissions
 type PublicApp struct {
 	*revel.Controller
@@ -54,7 +63,7 @@ type App struct {
 func (c App) checkUser() revel.Result {
 	if user := c.connected(); user == nil {
 		c.Validation.Required(user != nil).Key("Email").Message("Permissions required")
-		return c.Redirect(routes.Accounts.Login())
+		return c.Redirect(routes.Home.Index())
 	}
 	return nil
 }
@@ -68,11 +77,11 @@ type AdminApp struct {
 func (c AdminApp) checkUser() revel.Result {
 	if user := c.connected(); user == nil {
 		c.Validation.Required(user != nil).Key("Email").Message("Permissions required")
-		return c.Redirect(routes.Accounts.Login())
+		return c.Redirect(routes.Home.Index())
 	} else {
 		/*if !user.IsAdmin {
 			c.Validation.Required(user != nil).Key("Email").Message("Permissions required")
-			return c.Redirect(routes.Accounts.Login())
+			return c.Redirect(routes.Home.Index())
 		}*/
 	}
 	return nil

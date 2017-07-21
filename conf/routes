@@ -18,4 +18,16 @@ GET     /favicon.ico                            404
 GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
+
+POST      /accounts/login                    		Accounts.LoginProccess
+POST      /users/profile                     		Users.Profile
+POST      /users/change/password                     Users.ChangePassword
+POST      /users/change/email                    	 Users.ChangeEmail
+POST      /users/change/image                    	 Users.ChangeAvatar
+
+
+GET       /logout                    				 Accounts.Logout
+
+
 *       /:controller/:action                    :controller.:action
+

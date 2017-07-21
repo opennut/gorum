@@ -2,9 +2,8 @@ package controllers
 
 import (
 	//"github.com/opennut/gorum/app/models"
-	"regexp"
-
 	"github.com/revel/revel"
+	"regexp"
 )
 
 // Home Controller anon user
@@ -25,6 +24,6 @@ func (c Home) Detail(ID int, name string) revel.Result {
 	c.Validation.MinSize(name, 4)
 	c.Validation.Match(name, regexp.MustCompile("^\\w*$"))
 	c.Validation.Keep()
-
+	c.Flash.Success("Email changed")
 	return c.Render()
 }

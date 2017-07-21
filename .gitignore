@@ -3,3 +3,5 @@ tmp/
 routes/
 app/tmp/
 app/routes/
+public/uploads/*
+!public/uploads/README.md
