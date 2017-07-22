@@ -105,10 +105,7 @@ func (c Users) ChangeAvatar(avatar []byte) revel.Result {
 		}
 		defer newFile.Close()
 		// Copy the bytes to destination from source
-		bytesWritten, err := io.Copy(newFile, originalFile)
-		if err != nil {
-			log.Fatal(err)
-		}
+		io.Copy(newFile, originalFile)
 		user.FileName = "uploads/" + nameFile
 		c.Txn.Save(&user)
 	}
