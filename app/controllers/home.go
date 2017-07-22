@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	//"github.com/opennut/gorum/app/models"
+	"github.com/opennut/gorum/app/models"
 	"github.com/revel/revel"
 	"regexp"
 )
@@ -13,7 +13,9 @@ type Home struct {
 
 // Index page
 func (c Home) Index() revel.Result {
-	return c.Render()
+	var discussions = []models.Discussion{}
+	c.Txn.Where("active = true").Find(&discussions)
+	return c.Render(discussions)
 }
 
 // Detail page

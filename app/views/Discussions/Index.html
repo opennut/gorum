@@ -1,0 +1,103 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+<style>
+	.header-discussion .tags-badges .label{
+		font-size: 14px !important;
+	}
+	.header-discussion h1{
+		color: white;
+	}
+</style>
+<div class="container-fuild header-discussion" style="background-color: #333; margin-top: -20px !important;">
+	<div class="row" style="padding: 2em 0em;" >
+		<div class="col-md-8 col-md-offset-2"  style="text-align: center;" >
+			<div class="tags-badges" style="width: 100%;">
+				<span class="label btn-sm disabled btn-primary">Left</span>
+				<span class="label btn-sm disabled btn-success">Misssssssddle</span>
+				<span class="label btn-sm disabled btn-info">Right</span>
+				<span class="label btn-sm disabled btn-danger">Right</span>
+			</div>
+			<h1>{{ .currentDiscussion.Title }}</h1>
+		</div>
+	</div>
+</div>
+<style>
+	body {
+		position: relative;
+	}
+	ul.nav-pills {
+		position: fixed;
+	}
+	#scroll-bar-right .active a{
+		background-color: red;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-1">
+			<style>
+				.sec{
+					height: 200px;
+					border-bottom: solid 2px #000;
+				}
+			</style>
+			<div class="row" id="row-head" style="padding: 2em 0em;" >
+				<div class="media">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="/public/{{ .currentDiscussion.User.FileName }}" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						{{ .locale }}ss
+						<h4 class="media-heading">{{ .currentDiscussion.User.Username }}</h4> {{ timeago . .currentDiscussion.CreatedAt}}
+						<p>{{ markdown .currentDiscussion.Body }}</p>
+					</div>
+				</div>
+			</div>
+			{{ range .comments }}
+			<hr>
+			<div class="row" id="row-comment-{{ .ID }}">
+				<div class="media">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="/public/{{ .User.FileName }}" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{ .User.Username }}</h4>
+						<p>{{ markdown .Body }}</p>
+
+					</div>
+				</div>
+			</div>
+			{{ end }}
+
+		</div>
+		<div class="col-md-3">
+			<div class="row" style="margin-top: 50px;">
+			<nav class="col-sm-12" id="scroll-bar-right">
+					<ul class="nav nav-pills nav-stacked sidebar-nav-fixed" style="min-width: 200px;">
+						<li>
+							<button type="button" class="btn btn-primary btn-create-discussion">Responder</button>
+						</li>
+						<li><a href="#row-head">Principal</a></li>
+						{{ range .comments }}
+						<li><a href="#row-comment-{{ .ID }}">{{ .ID }}</a></li>
+						{{ end }}
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="span6">
+		</div>
+	</div>
+</div>
+
+{{template "footer.html" .}}

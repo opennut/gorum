@@ -8,6 +8,9 @@ import (
 	"modules/gorm/app"
 
 	"github.com/russross/blackfriday"
+
+	"github.com/xeonx/timeago"
+	"time"
 )
 
 func InitializeDB() {
@@ -15,6 +18,7 @@ func InitializeDB() {
 	gorm.DB.AutoMigrate(&models.User{})
 	gorm.DB.AutoMigrate(&models.Tag{})
 	gorm.DB.AutoMigrate(&models.Discussion{})
+	gorm.DB.AutoMigrate(&models.DiscussionComment{})
 	// var firstUser = models.User{Name: "Demo", Email: "demo@demo.com"}
 	// firstUser.SetNewPassword("demo")
 	// firstUser.Active = true
@@ -30,8 +34,13 @@ func init() {
 	revel.InterceptMethod((*gorm.GormController).Commit, revel.AFTER)
 	revel.InterceptMethod((*gorm.GormController).Rollback, revel.FINALLY)
 
-	revel.TemplateFuncs["markdown"] = func(str interface{}) string {
+	revel.TemplateFuncs["markdown"] = func(str interface{}) template.HTML {
 		s := blackfriday.MarkdownCommon([]byte(fmt.Sprintf("%s", str)))
-		return string(template.HTML(s))
+		return template.HTML(s)
+	}
+
+	revel.TemplateFuncs["timeagos"] = func(time time.Time) string {
+		s := timeago.English.Format(time)
+		return s
 	}
 }

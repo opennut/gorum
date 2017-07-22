@@ -51,169 +51,25 @@
 			</div>
 
 			<div class="list-group list-group-gorum">
-
-				<a href="#" class="list-group-item">
-
+				{{ range .discussions }}
+				<a href="{{ url "Discussions.Index" .Slug }}" class="list-group-item">
 					<div class="media-left">
 						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
 					</div>
 					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
+						<h4 class="media-heading">{{ .Title }}</h4>
+						<div class="tags-badges" style="margin-right: 10px;">
 							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
+								<span class="label btn-sm disabled btn-primary">General</span>
+								<span class="label btn-sm disabled btn-info">General</span>
+								<span class="label btn-sm disabled btn-danger">General</span>
 							</div>
 						</div>
 						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
 
 					</div>
 				</a>
-
-
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
-				<a href="#" class="list-group-item">
-
-					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
-					</div>
-					<div class="media-body">
-						<h4 class="media-heading">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem </h4>
-						<div class="tags-badges">
-							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">Left</span>
-								<span class="label btn-sm disabled btn-success">Misssssssddle</span>
-								<span class="label btn-sm disabled btn-info">Right</span>
-								<span class="label btn-sm disabled btn-danger">Right</span>
-							</div>
-						</div>
-						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>
-						<p class="list-group-item-text">És un fet establert de forma evident que un lector es distraurà amb el contingut llegible d'una pàgina quan miri a la seva composició. El fet de fer servir Lorem Ipsum és perquè conté una distribució més o menys normal de lletres, de forma oposada a quan es fa servir "Contingut aquí, contingut aquí", aconseguint així que sembli català llegible. Molts paquets d'autoedició fan servir Lorem Ipsum com el seu model de text, i una cerca per "Lorem Ipsum" descobrirà molts llocs web encara a les baceroles. Diverses versions han anat evolucionant al llarg dels anys, a vegades per acident, a vegades a propòsit (inserint humor i coses per l'estil).</p>
-
-					</div>
-				</a>
+				{{ end }}
 			</div>
 		</div>
 	</div>
