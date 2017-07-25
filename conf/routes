@@ -7,7 +7,7 @@ module:testrunner
 # module:jobs
 
 
-GET     /                                       Home.Index
+GET     /t/:tag/                                       Home.Tagged
 
 GET       /admin/									Dashboard.Index
 
@@ -28,6 +28,8 @@ POST      /users/change/image                    	 	Users.ChangeAvatar
 
 GET       /logout                    				 	Accounts.Logout
 
+
 GET		/:slug											Discussions.Index
+GET     /                                         		Home.Index
 *       /:controller/:action                    		:controller.:action
 

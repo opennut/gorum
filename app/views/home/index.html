@@ -10,51 +10,44 @@
 			<button type="button" class="btn btn-primary btn-create-discussion">Crear Discucion</button>
 			<br>
 			<br>
-			<!-- Small button group -->
-			<div class="btn-group">
-				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Small button
-					<!--span class="caret"></span-->
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-				</ul>
-			</div>
-			<!-- Small button group -->
-			<div class="btn-group">
-				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Small button <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#">Action</a></li>
-					<li><a href="#">Another action</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#">Separated link</a></li>
-				</ul>
-			</div>
+			{{if not $.tag}}
+			{{ set $ "tag" ""}}
+			{{ end }}
+			<ul class="nav nav-pills nav-stacked">
+				{{ range .tags }}
+				<li class="dropdown {{ if eq $.tag .Slug }} open {{ end}}" >
+					<a href="{{ url "Home.Tagged" .Slug }}" class="dropdown-toggle" onclick="javascript:window.location.href='{{ url "Home.Tagged" .Slug }}';" data-toggle="dropdown">
+						{{ .Title }}
+					</a>
+					{{ range subtags .ID }}
+					<ul class="dropdown-menu forAnimate " role="menu">
+						<a class="{{ if eq $.tag .Slug }} li-active {{ end}}" href="{{ url "Home.Tagged" .Slug }}">
+						{{ .Title }}
+					</a>
+					</ul>
+					{{ end }}
+				</li>
+				{{ end }}
+			</ul>
+
 		</div>
 		<div class="col-md-8">
 
 			<div style="text-align: right">
-			<select class="form-control sort">
-				<option>Ultimo</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
+				<select class="form-control sort">
+					<option>Ultimo</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
 			</div>
 
-			<div class="list-group list-group-gorum">
+			<div id="sidebar-left" class="list-group list-group-gorum">
 				{{ range .discussions }}
 				<a href="{{ url "Discussions.Index" .Slug }}" class="list-group-item">
 					<div class="media-left">
-						<img class="media-object" src="https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png" alt="...">
+						<img class="media-object" src="/public/{{ .User.FileName }}" alt="...">
 					</div>
 					<div class="media-body">
 						<h4 class="media-heading">{{ .Title }}</h4>
@@ -82,3 +75,11 @@
 </div>
 
 {{template "footer.html" .}}
+
+
+<script>
+	$(document).on("ready", function(){
+	console.log($("#sidebar-left").find(".li-active").parent());
+		$("#sidebar-left").find(".li-active").closest(".list-group-item").addClass("open");
+	})
+</script>

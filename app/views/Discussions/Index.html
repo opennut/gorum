@@ -50,8 +50,8 @@
 						</a>
 					</div>
 					<div class="media-body">
-						{{ .locale }}ss
-						<h4 class="media-heading">{{ .currentDiscussion.User.Username }}</h4> {{ timeago . .currentDiscussion.CreatedAt}}
+						<h4 class="media-heading">{{ .currentDiscussion.User.Username }}</h4>
+						{{ timeago .currentDiscussion.CreatedAt }}
 						<p>{{ markdown .currentDiscussion.Body }}</p>
 					</div>
 				</div>

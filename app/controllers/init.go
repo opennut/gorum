@@ -8,9 +8,6 @@ import (
 	"modules/gorm/app"
 
 	"github.com/russross/blackfriday"
-
-	"github.com/xeonx/timeago"
-	"time"
 )
 
 func InitializeDB() {
@@ -39,8 +36,10 @@ func init() {
 		return template.HTML(s)
 	}
 
-	revel.TemplateFuncs["timeagos"] = func(time time.Time) string {
-		s := timeago.English.Format(time)
-		return s
+	revel.TemplateFuncs["subtags"] = func(tag uint) []models.Tag {
+		var tags = []models.Tag{}
+		gorm.DB.Where("active = true and parent_id = ?", tag).Find(&tags)
+		return tags
 	}
+
 }
