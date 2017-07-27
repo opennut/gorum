@@ -53,9 +53,9 @@
 						<h4 class="media-heading">{{ .Title }}</h4>
 						<div class="tags-badges" style="margin-right: 10px;">
 							<div class="label-group" role="group" aria-label="...">
-								<span class="label btn-sm disabled btn-primary">General</span>
-								<span class="label btn-sm disabled btn-info">General</span>
-								<span class="label btn-sm disabled btn-danger">General</span>
+								{{ range .Tags }}
+								<span class="label btn-sm disabled btn-primary" style="background-color: {{.Color }};">{{ .Title }}</span>
+								{{ end }}
 							</div>
 						</div>
 						<span class="username"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> Mario Solis</span> Replied <time pubdate="true" datetime="2017-02-26T11:19:49-06:00" title="Sunday, February 26, 2017 11:19 AM" data-humantime="true">26 Feb</time>

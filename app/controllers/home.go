@@ -17,6 +17,7 @@ func (c Home) Index() revel.Result {
 	c.Txn.Where("active = true").Find(&discussions).Limit(25)
 	for i, _ := range discussions {
 		c.Txn.Model(discussions[i]).Related(&discussions[i].User)
+		c.Txn.Model(discussions[i]).Related(&discussions[i].Tags, "Tags")
 	}
 	var tags = []models.Tag{}
 	c.Txn.Where("active = true and parent_id is null").Find(&tags)
@@ -34,6 +35,7 @@ func (c Home) Tagged(tag string) revel.Result {
 		"tags.slug = ? or tags.parent_id in (select id from tags where slug = ?)", tag, tag).Find(&discussions)
 	for i, _ := range discussions {
 		c.Txn.Model(discussions[i]).Related(&discussions[i].User)
+		c.Txn.Model(discussions[i]).Related(&discussions[i].Tags, "Tags")
 	}
 	var tags = []models.Tag{}
 	c.Txn.Where("active = true and parent_id is null").Find(&tags)
