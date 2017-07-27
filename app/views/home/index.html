@@ -1,10 +1,40 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
 <style>
+	.menu-tags{
+		padding: 0;
+	}
+	.menu-tags li{
+		list-style: none;
+		margin: 0 !important;
+		text-align: left;
+		padding: 10px 0 !important;
 
+	}
+
+	.menu-tags li a{
+		padding-top: -10px;
+		color: #9EADC4;
+		margin-top: -10px;
+	}
+	.menu-tags li a:hover{
+		text-decoration: none;
+	}
+	.menu-tags li .sub-tags{
+		padding-top: 10px;
+		padding-left: 35px;
+	}
+	#sidebar-left .tag-icon-block{
+		width: 15px;
+		height: 15px;
+		margin-right: 10px;
+		margin-top: 2px;
+		border-radius: 2px;
+		float: left;
+	}
 
 </style>
-<div class="container">
+<div class="container" style="padding-top: 50px;">
 	<div class="row">
 		<div class="col-md-2 col-md-offset-1 left-menu">
 			<button type="button" class="btn btn-primary btn-create-discussion">Crear Discucion</button>
@@ -13,17 +43,18 @@
 			{{if not $.tag}}
 			{{ set $ "tag" ""}}
 			{{ end }}
-			<ul class="nav nav-pills nav-stacked">
+			<ul id="sidebar-left" class="menu-tags">
 				{{ range .tags }}
-				<li class="dropdown {{ if eq $.tag .Slug }} open {{ end}}" >
-					<a href="{{ url "Home.Tagged" .Slug }}" class="dropdown-toggle" onclick="javascript:window.location.href='{{ url "Home.Tagged" .Slug }}';" data-toggle="dropdown">
+				<li class="tag-menu-item {{ if eq $.tag .Slug }} open {{ end}}" data-color="{{ .Color }}">
+					<a href="{{ url "Home.Tagged" .Slug }}" class="dropdown-toggle" onclick="javascript:window.location.href='{{ url "Home.Tagged" .Slug }}';" data-toggle="dropdown" {{ if eq $.tag .Slug }}style="color:{{ .Color }};"{{ end}} >
+						<div class="tag-icon-block" style="background-color: {{ .Color  }} !important;"></div>
 						{{ .Title }}
 					</a>
 					{{ range subtags .ID }}
-					<ul class="dropdown-menu forAnimate " role="menu">
-						<a class="{{ if eq $.tag .Slug }} li-active {{ end}}" href="{{ url "Home.Tagged" .Slug }}">
-						{{ .Title }}
-					</a>
+					<ul class="sub-tags">
+						<a {{ if eq $.tag .Slug }} class="active" style="color:{{ .Color }}  !important;"{{ end}} href="{{ url "Home.Tagged" .Slug }}">
+							{{ .Title }}
+						</a>
 					</ul>
 					{{ end }}
 				</li>
@@ -43,7 +74,7 @@
 				</select>
 			</div>
 
-			<div id="sidebar-left" class="list-group list-group-gorum">
+			<div class="list-group list-group-gorum">
 				{{ range .discussions }}
 				<a href="{{ url "Discussions.Index" .Slug }}" class="list-group-item">
 					<div class="media-left">
@@ -79,7 +110,9 @@
 
 <script>
 	$(document).on("ready", function(){
-	console.log($("#sidebar-left").find(".li-active").parent());
-		$("#sidebar-left").find(".li-active").closest(".list-group-item").addClass("open");
-	})
+	console.log($("#sidebar-left").find(".active").closest(".tag-menu-item").html());
+	var currentItem = $("#sidebar-left").find(".active").closest(".tag-menu-item");
+	currentItem.addClass("open");
+	currentItem.find(".dropdown-toggle").css("color", currentItem.data("color"));
+})
 </script>

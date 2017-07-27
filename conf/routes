@@ -19,7 +19,7 @@ GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
 
-POST      /accounts/login                    			Accounts.LoginProccess
+POST      /accounts/login/                    			Accounts.LoginProccess
 POST      /users/profile                     			Users.Profile
 POST      /users/change/password                     	Users.ChangePassword
 POST      /users/change/email                    	 	Users.ChangeEmail

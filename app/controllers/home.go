@@ -39,7 +39,7 @@ func (c Home) Tagged(tag string) revel.Result {
 	}
 	var tags = []models.Tag{}
 	c.Txn.Where("active = true and parent_id is null").Find(&tags)
-	return c.Render(discussions, tags, tag)
+	return c.Render(tag, discussions, tags)
 }
 
 // Detail page

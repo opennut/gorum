@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/opennut/gorum/app/models"
 	"github.com/opennut/gorum/app/routes"
 	"github.com/revel/revel"
@@ -20,11 +21,14 @@ func (c Accounts) LoginProccess(email string, password string) revel.Result {
 	var user models.User
 	c.Txn.Where("email = ?", email).First(&user)
 	if c.Txn.Error != nil {
+		fmt.Println("Error")
 		panic(c.Txn.Error)
 	}
+	fmt.Println("Error")
 	c.Validation.Required(user.ID != 0).Key("email").Message("Email or Password incorrect")
 	err := bcrypt.CompareHashAndPassword(user.HashedPassword, []byte(password))
 	c.Validation.Required(err == nil).Key("password").Message("Email or Password incorrect")
+	fmt.Println("Error123")
 	if c.Validation.HasErrors() {
 		c.Validation.Keep()
 		c.Flash.Error("Login failed")
@@ -33,6 +37,7 @@ func (c Accounts) LoginProccess(email string, password string) revel.Result {
 		}
 		return c.Redirect(routes.Home.Index())
 	}
+	fmt.Println("Login process xxx")
 	c.Session["user"] = user.Email
 	c.Session["username"] = user.Username
 	c.Flash.Success("Welcome, " + user.Username)
