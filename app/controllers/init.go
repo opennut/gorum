@@ -3,11 +3,11 @@ package controllers
 import (
 	"fmt"
 	"github.com/opennut/gorum/app/models"
-	"github.com/revel/revel"
-	"html/template"
-	"modules/gorm/app"
+	gorm "github.com/revel/modules/orm/gorm/app"
 
+	"github.com/revel/revel"
 	"github.com/russross/blackfriday"
+	"html/template"
 )
 
 func InitializeDB() {
@@ -24,12 +24,9 @@ func InitializeDB() {
 
 func init() {
 	revel.OnAppStart(InitializeDB)
-	revel.InterceptMethod((*gorm.GormController).Begin, revel.BEFORE)
 	revel.InterceptMethod(PublicApp.AddUser, revel.BEFORE)
 	revel.InterceptMethod(App.checkUser, revel.BEFORE)
 	revel.InterceptMethod(AdminApp.checkUser, revel.BEFORE)
-	revel.InterceptMethod((*gorm.GormController).Commit, revel.AFTER)
-	revel.InterceptMethod((*gorm.GormController).Rollback, revel.FINALLY)
 
 	revel.TemplateFuncs["markdown"] = func(str interface{}) template.HTML {
 		s := blackfriday.MarkdownCommon([]byte(fmt.Sprintf("%s", str)))

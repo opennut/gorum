@@ -4,7 +4,8 @@ import (
 	"github.com/opennut/gorum/app/models"
 	"github.com/opennut/gorum/app/routes"
 	"github.com/revel/revel"
-	"modules/gorm/app"
+	//gormc "github.com/revel/modules/orm/gorm/app/controllers"
+	gormc "github.com/revel/modules/orm/gorm/app/controllers"
 )
 
 type FileInfo struct {
@@ -19,7 +20,7 @@ type FileInfo struct {
 // PublicApp without permissions
 type PublicApp struct {
 	*revel.Controller
-	gorm.GormController
+	gormc.TxnController
 }
 
 // AddUser func
