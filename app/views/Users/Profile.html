@@ -1,22 +1,19 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
-<style>
-	.media .media-object{
-		border-radius: 50px !important;
-		width: 100px;
-		height: 100px;
-		border: 4px solid #fff
-	}
-
-</style>
 <div class="container-fuild" style="background-color: #CCC; margin-top: -20px !important;">
 	<div class="row" style="padding: 2em 0em;" >
 		<div class="col-md-8 col-md-offset-2">
 			<div class="media">
 				<div class="media-left">
 					<a href="#">
-					<img class="media-object" src="https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg" alt="...">
+						<img class="media-object" src="/public/{{ .user.FileName }}" alt="...">
 					</a>
+					<form method="post" class="form-change-avatar" action="{{url "Users.ChangeAvatar"}}" enctype="multipart/form-data">
+						<div src="" class="clickFileInput">
+							<i class="icon fa fa-fw fa-plus-circle "></i>
+						</div>
+						<input class="fileInput" type="file" name="avatar" id="avatar" class="span6">
+					</form>
 				</div>
 				<div class="media-body">
 					<h4 class="media-heading">{{ .user.Username }}</h4>
@@ -25,12 +22,12 @@
 			</div>
 		</div>
 	</div>
-	</div>
+</div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-2 col-md-offset-1 left-menu">
-		<br>
-		<br>
+			<br>
+			<br>
 			<div class="btn-group">
 				<button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-rss" aria-hidden="true"></i> Publicaciones
@@ -45,13 +42,19 @@
 			<br>
 			<br>
 			<div class="btn-group">
-				<button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<button class="btn btn-default active" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-gears" aria-hidden="true"></i> Configuración
 				</button>
 			</div>
 		</div>
 		<div class="col-md-8">
-
+			<br>
+			<br>
+			<h5>Cuenta</h5>
+			<hr>
+			<!-- Standard button -->
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#changePasswordModal">Change Password</button>
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#changeEmaildModal">Change Email</button>
 
 		</div>
 	</div>
@@ -59,3 +62,80 @@
 </div>
 
 {{template "footer.html" .}}
+
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Change Password</h4>
+			</div>
+			<div class="modal-body">
+				<!--form action="" method="post">
+					<p>Click the link to send password change password</p>
+					<div style="text-align: center;">
+						<button type="submit" class="btn btn-default">Send Link</button>
+					</div>
+				</form-->
+				<form action="{{ url "Users.ChangePassword" }}" method="post">
+					<div class="form-group">
+						<label for="current_password">Current Password</label>
+						<input type="password" class="form-control" id="current_password" name="current_password" placeholder="Current Password">
+					</div>
+					<div class="form-group">
+						<label for="password">Current Password</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="Current Password">
+					</div>
+					<div class="form-group">
+						<label for="password2">Current Password</label>
+						<input type="password" class="form-control" id="password2" name="password2" placeholder="Current Password">
+					</div>
+					<button type="submit" class="btn btn-success">Change Password</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="changeEmaildModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Change Email</h4>
+			</div>
+			<div class="modal-body">
+				<form action="{{ url "Users.ChangeEmail" }}" method="post">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ .user.Email }}">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(document).on("ready", function() {
+		$('#changeEmaildModal').on('shown.bs.modal', function(e) {
+			$('#changeEmaildModal').find("#email").focus();
+		})
+
+		$(".form-change-avatar .clickFileInput").on("click", function() {
+			$(this).parent().find("#avatar").trigger('click');
+		})
+		$("#avatar").change(function() {
+			$(".form-change-avatar").submit();
+		});
+	})
+</script>

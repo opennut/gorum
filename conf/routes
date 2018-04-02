@@ -7,7 +7,7 @@ module:testrunner
 # module:jobs
 
 
-GET     /                                       Home.Index
+GET     /t/:tag/                                       Home.Tagged
 
 GET       /admin/									Dashboard.Index
 
@@ -18,4 +18,18 @@ GET     /favicon.ico                            404
 GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
-*       /:controller/:action                    :controller.:action
+
+POST      /accounts/login/                    			Accounts.LoginProccess
+POST      /users/profile                     			Users.Profile
+POST      /users/change/password                     	Users.ChangePassword
+POST      /users/change/email                    	 	Users.ChangeEmail
+POST      /users/change/image                    	 	Users.ChangeAvatar
+
+
+GET       /logout                    				 	Accounts.Logout
+
+
+GET		/:slug											Discussions.Index
+GET     /                                         		Home.Index
+*       /:controller/:action                    		:controller.:action
+

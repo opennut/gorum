@@ -3,135 +3,154 @@
 <html>
 
 <head>
-    <title>{{.title}}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-3.3.6.min.css">
-    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
-    <script src="/public/js/jquery-2.2.4.min.js"></script>
-    <script src="/public/js/bootstrap-3.3.6.min.js"></script>
+	<title>{{.title}}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/public/css/bootstrap-3.3.6.min.css">
+	<link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
+	<script src="/public/js/jquery-2.2.4.min.js"></script>
+	<script src="/public/js/bootstrap-3.3.6.min.js"></script>
 
-    {{range .moreStyles}}
-    <link rel="stylesheet" type="text/css" href="/public/{{.}}">
-    {{end}}
-    <link rel="stylesheet" type="text/css" href="/public/css/gorum.css">
-    <link rel="stylesheet" href="/public/css/font-awesome.min.css">
-    {{range .moreScripts}}
-    <script src="/public/{{.}}" type="text/javascript" charset="utf-8"></script>
-    {{end}}
+	{{range .moreStyles}}
+	<link rel="stylesheet" type="text/css" href="/public/{{.}}">
+	{{end}}
+	<link rel="stylesheet" type="text/css" href="/public/css/gorum.css">
+	<link rel="stylesheet" href="/public/css/font-awesome.min.css">
+	{{range .moreScripts}}
+	<script src="/public/{{.}}" type="text/javascript" charset="utf-8"></script>
+	{{end}}
+	<style>
+		.flash-messages{
+			margin-top: -20px;
+			min-height: 20px;
+		}
+	</style>
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#scroll-bar-right" data-offset="300">
+	<div class="flash-messages">
+		{{template "flash.html" .}}
+	</div>
+	{{ if not .user }}
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Iniciar Sesion</h4>
+				</div>
+				<div class="modal-body">
+					<form action='{{ url "Accounts.LoginProccess" }}' method="post">
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email address</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Registro</h4>
+				</div>
+				<div class="modal-body">
+					<form action='{{ url "Accounts.RegisterPost" }}' method="post">
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="username" name="username" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email address</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+						</div>
 
-    {{ if not .user }}
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Iniciar Sesion</h4>
-                </div>
-                <div class="modal-body">
-                    <form action='{{ url "Accounts.LoginProccess" }}' method="post">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Registro</h4>
-                </div>
-                <div class="modal-body">
-                    <form action='{{ url "Accounts.RegisterPost" }}' method="post">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                        </div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Confirmar Password</label>
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Confirmar Password</label>
-                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	{{ end }}
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/">Gorum</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+						</ul>
 
-    {{ end }}
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-                        <a class="navbar-brand" href="/">Gorum</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                        </ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<form class="navbar-form navbar-left">
+									<div class="form-group">
+										<input type="search" class="form-control search-text" placeholder="Buscar">
+									</div>
+								</form>
+							</li>
+							<!--li><a href="#">Link</a></li-->
+							{{ if .user }}
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="{{ url "Users.Profile" }}">
+											<i class="icon fa fa-fw fa-user Button-icon"></i>Perfil
+										</a>
+									</li>
+									<li>
+									<a href="{{ url "Users.Profile" }}">
+									<i class="icon fa fa-fw fa-cog Button-icon"></i>Configurations
+									</a></li>
+									<li role="separator" class="divider"></li>
+									<li>
+									<a href='{{ url "Accounts.Logout" }}'>
+									<i class="icon fa fa-fw fa-sign-out Button-icon"></i>Cerrar Sesión
+									</a>
+									</li>
+								</ul>
+							</li>
+							{{else}}
+							<li><a href="#" data-toggle="modal" data-target="#registerModal">Registrarse</a></li>
+							<li><a href="#" data-toggle="modal" data-target="#loginModal">Iniciar Sesion</a></li>
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <form class="navbar-form navbar-left">
-                                    <div class="form-group">
-                                        <input type="search" class="form-control search-text" placeholder="Buscar">
-                                    </div>
-                                </form>
-                            </li>
-                            <!--li><a href="#">Link</a></li-->
-                            {{ if .user }}
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="{{ url "Users.Profile" }}">Perfil</a></li>
-                                    <li><a href="#">Configuración</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href='{{ url "Accounts.Logout" }}'>Cerrar Sesión</a></li>
-                                </ul>
-                            </li>
-                            {{else}}
-                            <li><a href="#" data-toggle="modal" data-target="#registerModal">Registrarse</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#loginModal">Iniciar Sesion</a></li>
-
-                            {{ end }}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+							{{ end }}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
