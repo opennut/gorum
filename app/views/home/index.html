@@ -1,37 +1,123 @@
 {{set . "title" "Home"}}
 {{template "header.html" .}}
 <style>
-	.menu-tags{
-		padding: 0;
-	}
-	.menu-tags li{
-		list-style: none;
-		margin: 0 !important;
-		text-align: left;
-		padding: 10px 0 !important;
+ .menu-tags{
+		 padding: 0;
+ }
+ .menu-tags li{
+		 list-style: none;
+		 margin: 0 !important;
+		 text-align: left;
+		 padding: 10px 0 !important;
 
-	}
+ }
 
-	.menu-tags li a{
-		padding-top: -10px;
-		color: #9EADC4;
-		margin-top: -10px;
-	}
-	.menu-tags li a:hover{
-		text-decoration: none;
-	}
-	.menu-tags li .sub-tags{
-		padding-top: 10px;
-		padding-left: 35px;
-	}
-	#sidebar-left .tag-icon-block{
-		width: 15px;
-		height: 15px;
-		margin-right: 10px;
-		margin-top: 2px;
-		border-radius: 2px;
-		float: left;
-	}
+ .menu-tags li a{
+		 padding-top: -10px;
+		 color: #9EADC4;
+		 margin-top: -10px;
+ }
+ .menu-tags li a:hover{
+		 text-decoration: none;
+ }
+ .menu-tags li .sub-tags{
+		 padding-top: 10px;
+		 padding-left: 35px;
+ }
+ #sidebar-left .tag-icon-block{
+		 width: 15px;
+		 height: 15px;
+		 margin-right: 10px;
+		 margin-top: 2px;
+		 border-radius: 2px;
+		 float: right;
+ }
+
+ .discusiones{
+     border: 1px solid black;
+     width: 100 px;
+     height: 100px;
+     margin-bottom: 30px;
+ }
+
+ img.imagenes{
+     margin: 25px;
+     border:1px solid black;
+     width: 50px;
+     height: 50px;
+ }
+
+ .titulo_discusion{
+     margin-top: 10px;
+     font-size: 20px;
+ }
+
+ .resumen{
+     font-size: x-small;
+     margin-top: 15px;
+ }
+
+ .usuario{
+     font-weight: bold;
+ }
+
+ .prueba{
+     position:absolute;
+     bottom:60px;
+     right:80px;
+ }
+
+ .lista{
+     float: left;
+     padding: 5px;
+     border: 1px solid black;
+     font-size: xx-small;
+ }
+
+ .botones{
+     float: right;
+     margin-right: 10px;
+     bottom: 10px;
+ }
+
+ .casilla-busqueda{
+     width: 165px;
+     height: 45px;
+     border: 1px solid black;
+     text-align: center;
+     background-color: black;
+ }
+
+ .formulario{
+     width: 140px;
+     height: 34px;
+     margin-top: 5px;
+ }
+ /*Estilo aplicado*/
+ .cat-menu{
+     height: 300px;
+     widht: 165px;
+     border: 1px solid black;
+ }
+
+ .cat-div{
+     border: 1px solid black;
+ }
+
+ .elements{
+     border: 1px solid black;
+ }
+
+ .cat-titl{
+     font-size: x-small;
+     float: left;
+ }
+
+ .div-img{
+     width: 50px;
+     height: 50px;
+     border: 1px solid black;
+ }
 
 </style>
 <div class="container" style="padding-top: 50px;">
@@ -46,7 +132,7 @@
 			<ul id="sidebar-left" class="menu-tags">
 				{{ range .tags }}
 				<li class="tag-menu-item {{ if eq $.tag .Slug }} open {{ end}}" data-color="{{ .Color }}">
-					<a href="{{ url "Home.Tagged" .Slug }}" class="dropdown-toggle" onclick="javascript:window.location.href='{{ url "Home.Tagged" .Slug }}';" data-toggle="dropdown" {{ if eq $.tag .Slug }}style="color:{{ .Color }};"{{ end}} >
+					<a href="{{ url "Home.Tagged" .Slug }}" class="dropdown-toggle" onclick="javascript:window.location.href='{{ url "Home.Tagged" .Slug }}';" data-toggle="dropdo           wn" {{ if eq $.tag .Slug }}style="color:{{ .Color }};"{{ end}} >
 						<div class="tag-icon-block" style="background-color: {{ .Color  }} !important;"></div>
 						{{ .Title }}
 					</a>
@@ -60,11 +146,31 @@
 				</li>
 				{{ end }}
 			</ul>
-
+      <div class="casilla-busqueda">
+          <form method="GET">
+              <input name="" type="text" value="" placeholder='buscar' class="formulario" />
+          </form>
+      </div>
+      <div class="cat-menu">
+          <ul class="list-unstyled">
+              <li>
+                  <div class="media cat-div"><a href="">
+                      <div class="media-left div-img">
+                          <img alt="" src="public/img/categoria.jpg" class="media-object"/>
+                      </div>
+                      <div class="media-body">
+                          <h3 class="media-heading cat-titl" >Categoria 1</h3>
+                          <span>Numero de temas creados</span>
+                      </div></a>
+                  </div>
+              </li>
+          </ul>
+          <button><a href="_blank">Ver más</a></button>
+      </div>
 		</div>
 		<div class="col-md-8">
 
-			<div style="text-align: right">
+			<div>
 				<select class="form-control sort">
 					<option>Ultimo</option>
 					<option>2</option>
@@ -95,7 +201,81 @@
 				</a>
 				{{ end }}
 			</div>
-		</div>
+      <div class="discusiones">
+          <div class="media-left">
+              <a href="_blank"><img alt="" class="imagenes media-object" src="public/img/user.png"/></a>
+          </div>
+          <div class="media-body">
+              <h3 class="titulo_discusion media-heading">Titulo de la discusión</h3>
+              <span>
+                  <span class="resumen usuario">@Usuario </span>
+                  <span class="resumen">Fecha de creacion</span>
+                  <span class="resumen">Ultimo usuario en responder</span>
+              </span>
+              <div class="prueba"> 
+                  <ul class="list-unstyled">
+                      <li class="lista">1</li>
+                      <li class="lista">2</li>
+                      <li class="lista">3</li>
+                  </ul>
+              </div>
+              <div class="botones">
+                  <button class="glyphicon glyphicon-thumbs-up"></button>
+                  <br/>
+                  <button class="glyphicon glyphicon-comment"></button>
+              </div>
+          </div>
+      </div>
+      <div class="discusiones">
+              <div class="media-left">
+                  <a href="_blank"><img alt="" class="imagenes media-object" src="public/img/user.png"/></a>
+              </div>
+              <div class="media-body">
+                  <h3 class="titulo_discusion media-heading">Titulo de la discusión</h3>
+                  <span>
+                      <span class="resumen usuario">@Usuario </span>
+                      <span class="resumen">Fecha de creacion</span>
+                      <span class="resumen">Ultimo usuario en responder</span>
+                  </span>
+                  <div class="prueba"> 
+                      <ul class="list-unstyled">
+                          <li class="lista">1</li>
+                          <li class="lista">2</li>
+                          <li class="lista">3</li>
+                      </ul>
+                  </div>
+                  <div class="botones">
+                      <button class="glyphicon glyphicon-thumbs-up"></button>
+                      <br/>
+                      <button class="glyphicon glyphicon-comment"></button>
+                  </div>
+              </div>
+      </div>
+              <div class="discusiones">
+                  <div class="media-left">
+                      <a href="_blank"><img alt="" class="imagenes media-object" src="public/img/user.png"/></a>
+                  </div>
+                  <div class="media-body">
+                      <h3 class="titulo_discusion media-heading">Titulo de la discusión</h3>
+                      <span>
+                          <span class="resumen usuario">@Usuario </span>
+                          <span class="resumen">Fecha de creacion</span>
+                          <span class="resumen">Ultimo usuario en responder</span>
+                      </span>
+                      <div class="prueba"> 
+                          <ul class="list-unstyled">
+                              <li class="lista">1</li>
+                              <li class="lista">2</li>
+                              <li class="lista">3</li>
+                          </ul>
+                      </div>
+                      <div class="botones">
+                          <button class="glyphicon glyphicon-thumbs-up"></button>
+                          <br/>
+                          <button class="glyphicon glyphicon-comment"></button>
+                      </div>
+                  </div>
+              </div>
 	</div>
 </div>
 <div class="container">

@@ -72,6 +72,7 @@ body { padding-top: 70px; }
 .label-group .label+.label, .label-group .label+.label-group, .label-group .label-group+.label, .label-group .label-group+.label-group {
 	margin-left: -1px;
 }
+
 .label-group>.label:first-child {
 	border-top-left-radius: .26em !important;
 	border-bottom-left-radius: .26em !important;

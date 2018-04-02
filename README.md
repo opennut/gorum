@@ -1,7 +1,4 @@
-# Welcome to Revel
-
-A high-productivity web framework for the [Go language](http://www.golang.org/).
-
+# Welcome to Gorum
 
 ### Start the web server:
 
